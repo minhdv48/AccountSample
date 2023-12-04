@@ -1,0 +1,400 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="AccountAppModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AccChart">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="aref" Type="int" />
+          <Property Name="aChinaCode" Type="nvarchar" MaxLength="16" />
+          <Property Name="aHKCode" Type="nvarchar" MaxLength="16" />
+          <Property Name="aMrCode" Type="nvarchar" MaxLength="16" />
+          <Property Name="aName" Type="nvarchar" MaxLength="80" />
+          <Property Name="aHKName" Type="char" MaxLength="80" />
+          <Property Name="aMrName" Type="char" MaxLength="80" />
+          <Property Name="aDeptCode" Type="nvarchar" MaxLength="300" />
+          <Property Name="aLedger" Type="nvarchar" MaxLength="300" />
+          <Property Name="aType" Type="nvarchar" MaxLength="7" />
+          <Property Name="aLevel" Type="int" />
+          <Property Name="aParenet" Type="nvarchar" MaxLength="100" />
+          <Property Name="aGroup" Type="nvarchar" MaxLength="12" />
+          <Property Name="aComp" Type="nvarchar" MaxLength="1" />
+          <Property Name="aParentRef" Type="int" />
+          <Property Name="aAccType" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="AccChild">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ref" Type="int" />
+          <Property Name="ParentRef" Type="int" />
+          <Property Name="ChinaCode" Type="nvarchar" MaxLength="80" />
+          <Property Name="tOrd" Type="int" />
+        </EntityType>
+        <EntityType Name="AccDept">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="aRef" Type="int" />
+          <Property Name="CodeRef" Type="int" />
+          <Property Name="aChinaCode" Type="char" MaxLength="10" />
+          <Property Name="aDeptCode" Type="char" MaxLength="10" />
+          <Property Name="aLedger" Type="char" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="AccLedger">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="aref" Type="int" />
+          <Property Name="aChinaCode" Type="nvarchar" MaxLength="16" />
+          <Property Name="aLedger" Type="nvarchar" MaxLength="8" />
+        </EntityType>
+        <EntityType Name="Accnvarchart">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="aref" Type="int" />
+          <Property Name="aChinaCode" Type="nvarchar" MaxLength="16" />
+          <Property Name="aHKCode" Type="nvarchar" MaxLength="16" />
+          <Property Name="aMrCode" Type="nvarchar" MaxLength="16" />
+          <Property Name="aName" Type="nvarchar" MaxLength="80" />
+          <Property Name="aDeptCode" Type="nvarchar" MaxLength="300" />
+          <Property Name="aLedger" Type="nvarchar" MaxLength="4" />
+          <Property Name="aType" Type="nvarchar" MaxLength="7" />
+          <Property Name="aLevel" Type="float" />
+          <Property Name="aParenet" Type="nvarchar" MaxLength="100" />
+          <Property Name="aGroup" Type="nvarchar" MaxLength="12" />
+          <Property Name="aComp" Type="nvarchar" MaxLength="1" />
+          <Property Name="aParentRef" Type="int" />
+        </EntityType>
+        <EntityType Name="SetUP01">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ChinaCode" Type="decimal" Precision="18" Scale="4" />
+          <Property Name="HKCode" Type="decimal" Precision="18" Scale="4" />
+          <Property Name="MrCode" Type="decimal" Precision="18" Scale="4" />
+        </EntityType>
+        <EntityType Name="SetUP02">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="aref" Type="int" />
+          <Property Name="aChinaCode" Type="nvarchar" MaxLength="16" />
+          <Property Name="aMMType" Type="nvarchar" MaxLength="8" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="tDept">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="xDeptCode" Type="char" MaxLength="20" />
+          <Property Name="xFullName" Type="char" MaxLength="60" />
+          <Property Name="xOrd" Type="int" />
+          <Property Name="xDelFlag" Type="char" MaxLength="1" />
+        </EntityType>
+        <EntityContainer Name="AccountAppModelStoreContainer">
+          <EntitySet Name="AccChart" EntityType="Self.AccChart" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AccChild" EntityType="Self.AccChild" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AccDept" EntityType="Self.AccDept" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AccLedger" EntityType="Self.AccLedger" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Accnvarchart" EntityType="Self.Accnvarchart" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SetUP01" EntityType="Self.SetUP01" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SetUP02" EntityType="Self.SetUP02" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tDept" EntityType="Self.tDept" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="AccountAppModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="AccChart">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="aref" Type="Int32" />
+          <Property Name="aChinaCode" Type="String" MaxLength="16" FixedLength="false" Unicode="true" />
+          <Property Name="aHKCode" Type="String" MaxLength="16" FixedLength="false" Unicode="true" />
+          <Property Name="aMrCode" Type="String" MaxLength="16" FixedLength="false" Unicode="true" />
+          <Property Name="aName" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
+          <Property Name="aHKName" Type="String" MaxLength="80" FixedLength="true" Unicode="false" />
+          <Property Name="aMrName" Type="String" MaxLength="80" FixedLength="true" Unicode="false" />
+          <Property Name="aDeptCode" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="aLedger" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="aType" Type="String" MaxLength="7" FixedLength="false" Unicode="true" />
+          <Property Name="aLevel" Type="Int32" />
+          <Property Name="aParenet" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="aGroup" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
+          <Property Name="aComp" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="aParentRef" Type="Int32" />
+          <Property Name="aAccType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="AccChild">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ref" Type="Int32" />
+          <Property Name="ParentRef" Type="Int32" />
+          <Property Name="ChinaCode" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
+          <Property Name="tOrd" Type="Int32" />
+        </EntityType>
+        <EntityType Name="AccDept">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="aRef" Type="Int32" />
+          <Property Name="CodeRef" Type="Int32" />
+          <Property Name="aChinaCode" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="aDeptCode" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="aLedger" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+        </EntityType>
+        <EntityType Name="AccLedger">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="aref" Type="Int32" />
+          <Property Name="aChinaCode" Type="String" MaxLength="16" FixedLength="false" Unicode="true" />
+          <Property Name="aLedger" Type="String" MaxLength="8" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Accnvarchart">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="aref" Type="Int32" />
+          <Property Name="aChinaCode" Type="String" MaxLength="16" FixedLength="false" Unicode="true" />
+          <Property Name="aHKCode" Type="String" MaxLength="16" FixedLength="false" Unicode="true" />
+          <Property Name="aMrCode" Type="String" MaxLength="16" FixedLength="false" Unicode="true" />
+          <Property Name="aName" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
+          <Property Name="aDeptCode" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="aLedger" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="aType" Type="String" MaxLength="7" FixedLength="false" Unicode="true" />
+          <Property Name="aLevel" Type="Double" />
+          <Property Name="aParenet" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="aGroup" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
+          <Property Name="aComp" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="aParentRef" Type="Int32" />
+        </EntityType>
+        <EntityType Name="SetUP01">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ChinaCode" Type="Decimal" Precision="18" Scale="4" />
+          <Property Name="HKCode" Type="Decimal" Precision="18" Scale="4" />
+          <Property Name="MrCode" Type="Decimal" Precision="18" Scale="4" />
+        </EntityType>
+        <EntityType Name="SetUP02">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="aref" Type="Int32" />
+          <Property Name="aChinaCode" Type="String" MaxLength="16" FixedLength="false" Unicode="true" />
+          <Property Name="aMMType" Type="String" MaxLength="8" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="tDept">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="xDeptCode" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
+          <Property Name="xFullName" Type="String" MaxLength="60" FixedLength="true" Unicode="false" />
+          <Property Name="xOrd" Type="Int32" />
+          <Property Name="xDelFlag" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+        </EntityType>
+        <EntityContainer Name="AccountAppEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AccCharts" EntityType="Self.AccChart" />
+          <EntitySet Name="AccChilds" EntityType="Self.AccChild" />
+          <EntitySet Name="AccDepts" EntityType="Self.AccDept" />
+          <EntitySet Name="AccLedgers" EntityType="Self.AccLedger" />
+          <EntitySet Name="Accnvarcharts" EntityType="Self.Accnvarchart" />
+          <EntitySet Name="SetUP01" EntityType="Self.SetUP01" />
+          <EntitySet Name="SetUP02" EntityType="Self.SetUP02" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+          <EntitySet Name="tDepts" EntityType="Self.tDept" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="AccountAppModelStoreContainer" CdmEntityContainer="AccountAppEntities">
+          <EntitySetMapping Name="AccCharts">
+            <EntityTypeMapping TypeName="AccountAppModel.AccChart">
+              <MappingFragment StoreEntitySet="AccChart">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="aref" ColumnName="aref" />
+                <ScalarProperty Name="aChinaCode" ColumnName="aChinaCode" />
+                <ScalarProperty Name="aHKCode" ColumnName="aHKCode" />
+                <ScalarProperty Name="aMrCode" ColumnName="aMrCode" />
+                <ScalarProperty Name="aName" ColumnName="aName" />
+                <ScalarProperty Name="aHKName" ColumnName="aHKName" />
+                <ScalarProperty Name="aMrName" ColumnName="aMrName" />
+                <ScalarProperty Name="aDeptCode" ColumnName="aDeptCode" />
+                <ScalarProperty Name="aLedger" ColumnName="aLedger" />
+                <ScalarProperty Name="aType" ColumnName="aType" />
+                <ScalarProperty Name="aLevel" ColumnName="aLevel" />
+                <ScalarProperty Name="aParenet" ColumnName="aParenet" />
+                <ScalarProperty Name="aGroup" ColumnName="aGroup" />
+                <ScalarProperty Name="aComp" ColumnName="aComp" />
+                <ScalarProperty Name="aParentRef" ColumnName="aParentRef" />
+                <ScalarProperty Name="aAccType" ColumnName="aAccType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AccChilds">
+            <EntityTypeMapping TypeName="AccountAppModel.AccChild">
+              <MappingFragment StoreEntitySet="AccChild">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ref" ColumnName="ref" />
+                <ScalarProperty Name="ParentRef" ColumnName="ParentRef" />
+                <ScalarProperty Name="ChinaCode" ColumnName="ChinaCode" />
+                <ScalarProperty Name="tOrd" ColumnName="tOrd" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AccDepts">
+            <EntityTypeMapping TypeName="AccountAppModel.AccDept">
+              <MappingFragment StoreEntitySet="AccDept">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="aRef" ColumnName="aRef" />
+                <ScalarProperty Name="CodeRef" ColumnName="CodeRef" />
+                <ScalarProperty Name="aChinaCode" ColumnName="aChinaCode" />
+                <ScalarProperty Name="aDeptCode" ColumnName="aDeptCode" />
+                <ScalarProperty Name="aLedger" ColumnName="aLedger" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AccLedgers">
+            <EntityTypeMapping TypeName="AccountAppModel.AccLedger">
+              <MappingFragment StoreEntitySet="AccLedger">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="aref" ColumnName="aref" />
+                <ScalarProperty Name="aChinaCode" ColumnName="aChinaCode" />
+                <ScalarProperty Name="aLedger" ColumnName="aLedger" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Accnvarcharts">
+            <EntityTypeMapping TypeName="AccountAppModel.Accnvarchart">
+              <MappingFragment StoreEntitySet="Accnvarchart">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="aref" ColumnName="aref" />
+                <ScalarProperty Name="aChinaCode" ColumnName="aChinaCode" />
+                <ScalarProperty Name="aHKCode" ColumnName="aHKCode" />
+                <ScalarProperty Name="aMrCode" ColumnName="aMrCode" />
+                <ScalarProperty Name="aName" ColumnName="aName" />
+                <ScalarProperty Name="aDeptCode" ColumnName="aDeptCode" />
+                <ScalarProperty Name="aLedger" ColumnName="aLedger" />
+                <ScalarProperty Name="aType" ColumnName="aType" />
+                <ScalarProperty Name="aLevel" ColumnName="aLevel" />
+                <ScalarProperty Name="aParenet" ColumnName="aParenet" />
+                <ScalarProperty Name="aGroup" ColumnName="aGroup" />
+                <ScalarProperty Name="aComp" ColumnName="aComp" />
+                <ScalarProperty Name="aParentRef" ColumnName="aParentRef" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SetUP01">
+            <EntityTypeMapping TypeName="AccountAppModel.SetUP01">
+              <MappingFragment StoreEntitySet="SetUP01">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ChinaCode" ColumnName="ChinaCode" />
+                <ScalarProperty Name="HKCode" ColumnName="HKCode" />
+                <ScalarProperty Name="MrCode" ColumnName="MrCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SetUP02">
+            <EntityTypeMapping TypeName="AccountAppModel.SetUP02">
+              <MappingFragment StoreEntitySet="SetUP02">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="aref" ColumnName="aref" />
+                <ScalarProperty Name="aChinaCode" ColumnName="aChinaCode" />
+                <ScalarProperty Name="aMMType" ColumnName="aMMType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="AccountAppModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tDepts">
+            <EntityTypeMapping TypeName="AccountAppModel.tDept">
+              <MappingFragment StoreEntitySet="tDept">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="xDeptCode" ColumnName="xDeptCode" />
+                <ScalarProperty Name="xFullName" ColumnName="xFullName" />
+                <ScalarProperty Name="xOrd" ColumnName="xOrd" />
+                <ScalarProperty Name="xDelFlag" ColumnName="xDelFlag" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
